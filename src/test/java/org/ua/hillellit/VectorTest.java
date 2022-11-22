@@ -1,9 +1,12 @@
 package org.ua.hillellit;
 
 import java.util.Arrays;
+
+import org.springframework.core.io.ClassPathResource;
 import org.ua.hillellit.math.model.Vector;
 import org.ua.hillellit.math.exceptions.FileMaxSizeReachedException;
 import org.ua.hillellit.math.model.logger.FileLogger;
+import org.ua.hillellit.math.model.logger.FileLoggerConfiguration;
 import org.ua.hillellit.math.model.logger.FileLoggerConfigurationLoader;
 
 import static org.junit.Assert.assertEquals;
@@ -14,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 public class VectorTest {
   FileLoggerConfigurationLoader flcl = new FileLoggerConfigurationLoader();
   FileLogger fl = new FileLogger(
-      flcl.load("src\\main\\java\\org\\ua\\hillellit\\math\\resources\\configuration.properties"));
+      flcl.load(new ClassPathResource("src\\main\\resources\\configuration.properties").getPath()));
   @org.junit.Test
   public void checkVectorMethods() throws FileMaxSizeReachedException {
 
